@@ -57,35 +57,54 @@ Person.aggregate([{
 // Find all persons whose age is between 20 and 30.
 
 // Your pipeline below
-
+Person.aggregate([{
+    $match : {age: {$gt: 20 , $lt: 30 }}
+}])
 
 
 // Q7
 // Group persons by gender and count how many persons belong to each gender.
 
 // Your pipeline below
-
+Person.aggregate([
+    {$group : {
+        _id: '$gender',
+        count: {$sum: 1}
+        }},
+])
 
 
 // Q8
 // Find the average age of all persons.
 
 // Your pipeline below
-
+Person.aggregate([{
+    $group: {
+        _id: null,
+        avgAge: {$avg : '$age'}
+    }
+}])
 
 
 // Q9
 // Group persons by country and return the total number of persons per country.
 
 // Your pipeline below
-
-
+Person.aggregate([
+    {$group : {
+        _id: '$country',
+        population: {$sum: 1}
+    }},
+])
 
 // Q10
 // Find the youngest person in the collection.
 
 // Your pipeline below
-
+Person.aggregate([
+    {$sort : {age: 1}},
+    {$limit : 1}
+])
 
 
 // Q11
