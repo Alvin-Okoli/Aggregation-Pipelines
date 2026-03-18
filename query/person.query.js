@@ -2,39 +2,55 @@
 // MongoDB Aggregation Practice
 // ==============================
 
+import { Person } from '../models/person.model'
+
 // Q1
 // Return all persons older than 25.
 
 // Your pipeline below
-
-
+Person.aggregate([{
+    $match : {age: {$gt: 25}}
+}])
 
 // Q2
 // Return only the name and age fields of every person.
 
 // Your pipeline below
-
+Person.aggregate([{
+    $project : {
+        _id: {
+            name: 1,
+            age: 1
+        }
+    }
+}])
 
 
 // Q3
 // Sort all persons by age in descending order.
 
 // Your pipeline below
-
+Person.aggregate([{
+    $sort : {age: -1}
+}])
 
 
 // Q4
 // Return the first 5 persons in the collection.
 
 // Your pipeline below
-
+Person.aggregate([{
+    $limit : 5
+}])
 
 
 // Q5
 // Count how many persons exist in the collection.
 
 // Your pipeline below
-
+Person.aggregate([{
+    $count : 'totalPersons'
+}])
 
 
 // Q6
