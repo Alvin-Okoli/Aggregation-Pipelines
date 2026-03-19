@@ -111,7 +111,10 @@ Person.aggregate([
 // Find the oldest person in the collection.
 
 // Your pipeline below
-
+Person.aggregate([
+    {$sort: {age:-1}},
+    {$limit: 1}
+])
 
 
 // Q12
@@ -121,28 +124,47 @@ Person.aggregate([
 // { age: 21, count: 4 }
 
 // Your pipeline below
-
+Person.aggregate([{
+    $group : {
+        _id: '$age',
+        count: {$sum: 1}
+    }
+}])
 
 
 // Q13
 // Find the average age per country.
 
 // Your pipeline below
-
+Person.aggregate([{
+    $group : {
+        _id: '$country',
+        avgAge: {$avg:'$age'}
+    }
+}])
 
 
 // Q14
 // Return the top 3 oldest persons.
 
 // Your pipeline below
-
+Person.aggregate([
+    {$sort : {age: -1}},
+    {$limit: 3}
+])
 
 
 // Q15
 // Add a new field called "isAdult" that is true if age >= 18 and false otherwise.
 
 // Your pipeline below
-
+Person.aggregate([
+  {
+    $addFields: {
+      isAdult: { $gte: ["$age", 18] }
+    }
+  }
+])
 
 
 // Q16
@@ -183,3 +205,9 @@ Person.aggregate([
 // Sort from highest to lowest.
 
 // Your pipeline below
+
+
+
+//I can give you:
+// 🔥 10 real backend API aggregation problems
+// (e.g. pagination + count, leaderboard, analytics endpoints)
