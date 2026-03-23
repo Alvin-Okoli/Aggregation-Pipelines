@@ -174,7 +174,7 @@ Person.aggregate([
 // "Senior" if age > 60
 
 // Your pipeline below
-
+Person.aggregate()
 
 
 // Q17
@@ -183,21 +183,21 @@ Person.aggregate([
 // - average age
 
 // Your pipeline below
-
+Person.aggregate()
 
 
 // Q18
 // Return only countries that have more than 5 persons.
 
 // Your pipeline below
-
+Person.aggregate()
 
 
 // Q19
 // Sort countries by the number of persons in descending order.
 
 // Your pipeline below
-
+Person.aggregate()
 
 
 // Q20
@@ -205,7 +205,7 @@ Person.aggregate([
 // Sort from highest to lowest.
 
 // Your pipeline below
-
+Person.aggregate()
 
 
 //I can give you:
