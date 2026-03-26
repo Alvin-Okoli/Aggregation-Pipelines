@@ -183,21 +183,45 @@ Person.aggregate()
 // - average age
 
 // Your pipeline below
-Person.aggregate()
+Person.aggregate([{
+    $group: {
+        _id: $country,
+        totalPersons: {
+            $sum: 1
+        },
+        avgAge: {
+            $avg: '$age'
+        }
+    }
+}])
 
 
 // Q18
 // Return only countries that have more than 5 persons.
 
 // Your pipeline below
-Person.aggregate()
+Person.aggregate([{
+    $group: {
+        _id: "$country",
+        people: {$sum: 1}
+    },
+    $match: {
+        people: {$gt: 5}
+    }
+}])
 
 
 // Q19
 // Sort countries by the number of persons in descending order.
 
 // Your pipeline below
-Person.aggregate()
+Person.aggregate([{
+    $group: {
+        _id: '$country',
+        people: {$sum: 1}
+    },
+    $sort: {people: -1}
+}])
 
 
 // Q20
@@ -205,9 +229,11 @@ Person.aggregate()
 // Sort from highest to lowest.
 
 // Your pipeline below
-Person.aggregate()
+Person.aggregate([{
+    $group: {
+        _id: '$country',
+        avgAge: {$avg: '$age'}
+    },
+    $sort: {avgAge: -1}
+}])
 
-
-//I can give you:
-// 🔥 10 real backend API aggregation problems
-// (e.g. pagination + count, leaderboard, analytics endpoints)
